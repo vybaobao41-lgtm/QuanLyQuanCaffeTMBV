@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Mockup Giao Diện - Quản Lý Bàn</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* CSS bổ sung để thẻ <a> hiển thị đúng trong mockup */
+        .nav-tab {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" style="justify-content: space-between; display: flex; align-items: center;">
+    <div style="display: flex; align-items: center;">
+        <img src="./images/logo.png" class="header-logo" alt="Logo">
+        <div>
+            <h1>Quán Cafe <span>Quản Lý (Mockup Giữa Kỳ)</span></h1>
+            <div class="chu-nho">Giao diện tĩnh thử nghiệm - Không kết nối CSDL</div>
+        </div>
+    </div>
+    <button onclick="window.location.href='./login.html'" class="btn btn-do" style="padding: 8px 15px; margin-right: 20px;">🚪 Đăng Xuất</button>
+</header>
+
+<!-- ===== THANH ĐIỀU HƯỚNG ===== -->
+<nav class="nav-tabs">
+    <a href="./index.html" class="nav-tab active">🪑 Quản Lý Bàn</a>
+    <a href="./menu.html" class="nav-tab">📋 Quản Lý Menu</a>
+    <a href="./order.html" class="nav-tab">🛎️ Gọi Món & Thanh Toán</a>
+    <a href="./lichsu.html" class="nav-tab">📊 Lịch Sử Hóa Đơn</a>
+</nav>
+
+<!-- ===== NỘI DUNG CHÍNH ===== -->
+<main class="main-content">
+    <section class="trang">
+        <div class="luoi-2-cot">
+            <!-- Sơ đồ bàn mockup -->
+            <div>
+                <div class="card">
+                    <div class="card-title">🗺️ Sơ Đồ Bàn (Mockup)</div>
+                    <div class="luoi-ban">
+                        <div class="the-ban co-khach" onclick="alert('Bàn 1 đang có khách. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">☕</span>
+                            <div class="ten-ban">Bàn 1</div>
+                            <span class="trang-thai-ban co-khach">Có Khách</span>
+                        </div>
+                        <div class="the-ban trong" onclick="alert('Bàn 2 đang trống. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">🪑</span>
+                            <div class="ten-ban">Bàn 2</div>
+                            <span class="trang-thai-ban trong">Trống</span>
+                        </div>
+                        <div class="the-ban trong" onclick="alert('Bàn 3 đang trống. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">🪑</span>
+                            <div class="ten-ban">Bàn 3</div>
+                            <span class="trang-thai-ban trong">Trống</span>
+                        </div>
+                        <div class="the-ban co-khach" onclick="alert('Bàn 4 đang có khách. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">☕</span>
+                            <div class="ten-ban">Bàn 4</div>
+                            <span class="trang-thai-ban co-khach">Có Khách</span>
+                        </div>
+                        <div class="the-ban trong" onclick="alert('Bàn 5 đang trống. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">🪑</span>
+                            <div class="ten-ban">Bàn 5</div>
+                            <span class="trang-thai-ban trong">Trống</span>
+                        </div>
+                        <div class="the-ban trong" onclick="alert('Bàn VIP 1 đang trống. Đây là giao diện tĩnh!')">
+                            <span class="icon-ban">🪑</span>
+                            <div class="ten-ban">Bàn VIP 1</div>
+                            <span class="trang-thai-ban trong">Trống</span>
+                        </div>
+                    </div>
+                    <div class="chu-nho mt-15">
+                        💡 Nhấn vào bàn để xem thử (Chế độ tĩnh không lưu thay đổi).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quản lý bàn mockup -->
+            <div>
+                <div class="card">
+                    <div class="card-title">➕ Thêm Bàn Mới</div>
+                    <div class="form-nhom">
+                        <label class="form-nhan" for="ten-ban-moi">Tên bàn</label>
+                        <input id="ten-ban-moi" type="text" class="form-nhap" placeholder="Ví dụ: Bàn 6, Bàn VIP 2">
+                    </div>
+                    <button class="btn btn-chinh" onclick="alert('Đã nhấn Thêm Bàn! (Giao diện tĩnh không lưu)')">➕ Thêm Bàn</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
