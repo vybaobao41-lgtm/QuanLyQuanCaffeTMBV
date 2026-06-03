@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Mockup Giao Diện - Lịch Sử Hóa Đơn</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .nav-tab {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header" style="justify-content: space-between; display: flex; align-items: center;">
+    <div style="display: flex; align-items: center;">
+        <img src="./images/logo.png" class="header-logo" alt="Logo">
+        <div>
+            <h1>Quán Cafe <span>Quản Lý (Mockup Giữa Kỳ)</span></h1>
+            <div class="chu-nho">Giao diện tĩnh thử nghiệm - Không kết nối CSDL</div>
+        </div>
+    </div>
+    <button onclick="window.location.href='./login.html'" class="btn btn-do" style="padding: 8px 15px; margin-right: 20px;">🚪 Đăng Xuất</button>
+</header>
+
+<!-- ===== THANH ĐIỀU HƯỚNG ===== -->
+<nav class="nav-tabs">
+    <a href="./index.html" class="nav-tab">🪑 Quản Lý Bàn</a>
+    <a href="./menu.html" class="nav-tab">📋 Quản Lý Menu</a>
+    <a href="./order.html" class="nav-tab">🛎️ Gọi Món & Thanh Toán</a>
+    <a href="./lichsu.html" class="nav-tab active">📊 Lịch Sử Hóa Đơn</a>
+</nav>
+
+<!-- ===== NỘI DUNG CHÍNH ===== -->
+<main class="main-content">
+    <section class="trang">
+        <div class="card">
+            <div class="flex-hang mb-15">
+                <div class="card-title" style="margin:0;border:none;padding:0">📊 Lịch Sử Hóa Đơn (Mockup)</div>
+                <button class="btn btn-xam" onclick="alert('Đang làm mới dữ liệu tĩnh...')">🔄 Làm Mới</button>
+            </div>
+            <div style="overflow-x:auto">
+                <table class="bang-du-lieu">
+                    <thead>
+                        <tr>
+                            <th>Mã HĐ</th>
+                            <th>Bàn</th>
+                            <th>Giờ Mở</th>
+                            <th>Giờ Thanh Toán</th>
+                            <th>Tổng Tiền</th>
+                            <th>Trạng Thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td>Bàn 1</td>
+                            <td>24/05/2026 08:15:30</td>
+                            <td>24/05/2026 09:10:22</td>
+                            <td class="gia-tien">54.000 đ</td>
+                            <td><span class="badge badge-da-tt">Đã thanh toán</span></td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td>Bàn 4</td>
+                            <td>24/05/2026 08:30:12</td>
+                            <td>24/05/2026 09:25:40</td>
+                            <td class="gia-tien">89.000 đ</td>
+                            <td><span class="badge badge-da-tt">Đã thanh toán</span></td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td>Bàn 2</td>
+                            <td>24/05/2026 09:40:00</td>
+                            <td>24/05/2026 10:15:05</td>
+                            <td class="gia-tien">35.000 đ</td>
+                            <td><span class="badge badge-da-tt">Đã thanh toán</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
