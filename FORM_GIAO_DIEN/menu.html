@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Mockup Giao Diện - Quản Lý Menu</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .nav-tab {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <img src="./images/logo.png" class="header-logo" alt="Logo">
+    <div>
+        <h1>Quán Cafe <span>Quản Lý (Mockup Giữa Kỳ)</span></h1>
+        <div class="chu-nho">Giao diện tĩnh thử nghiệm - Không kết nối CSDL</div>
+    </div>
+</header>
+
+<!-- ===== THANH ĐIỀU HƯỚNG ===== -->
+<nav class="nav-tabs">
+    <a href="./index.html" class="nav-tab">🪑 Quản Lý Bàn</a>
+    <a href="./menu.html" class="nav-tab active">📋 Quản Lý Menu</a>
+    <a href="./order.html" class="nav-tab">🛎️ Gọi Món & Thanh Toán</a>
+    <a href="./lichsu.html" class="nav-tab">📊 Lịch Sử Hóa Đơn</a>
+</nav>
+
+<!-- ===== NỘI DUNG CHÍNH ===== -->
+<main class="main-content">
+    <section class="trang">
+        <div class="card">
+            <div class="flex-hang mb-15">
+                <div class="card-title" style="margin:0;border:none;padding:0">📋 Danh Sách Thực Đơn (Mockup)</div>
+                <button class="btn btn-chinh" onclick="moModal('modal-them-sp')">➕ Thêm Món Mới</button>
+            </div>
+            <div style="overflow-x:auto">
+                <table class="bang-du-lieu">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Loại</th>
+                            <th>Giá</th>
+                            <th>Trạng Thái</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Cà Phê Đá</strong></td>
+                            <td><span class="badge badge-thuc-uong">🥤 Thức Uống</span></td>
+                            <td class="gia-tien">25.000 đ</td>
+                            <td><span class="badge badge-da-tt">✅ Đang bán</span></td>
+                            <td>
+                                <button class="btn btn-xam btn-nho" onclick="moModal('modal-sua-sp')">✏️ Sửa</button>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã ẩn sản phẩm! (Giao diện tĩnh)')">🗑️ Ẩn</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Cà Phê Sữa Đá</strong></td>
+                            <td><span class="badge badge-thuc-uong">🥤 Thức Uống</span></td>
+                            <td class="gia-tien">29.000 đ</td>
+                            <td><span class="badge badge-da-tt">✅ Đang bán</span></td>
+                            <td>
+                                <button class="btn btn-xam btn-nho" onclick="moModal('modal-sua-sp')">✏️ Sửa</button>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã ẩn sản phẩm! (Giao diện tĩnh)')">🗑️ Ẩn</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Bánh Mì Pate</strong></td>
+                            <td><span class="badge badge-do-an">🍽️ Đồ Ăn</span></td>
+                            <td class="gia-tien">25.000 đ</td>
+                            <td><span class="badge badge-da-tt">✅ Đang bán</span></td>
+                            <td>
+                                <button class="btn btn-xam btn-nho" onclick="moModal('modal-sua-sp')">✏️ Sửa</button>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã ẩn sản phẩm! (Giao diện tĩnh)')">🗑️ Ẩn</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Trà Đào Cam Sả</strong></td>
+                            <td><span class="badge badge-thuc-uong">🥤 Thức Uống</span></td>
+                            <td class="gia-tien">35.000 đ</td>
+                            <td><span class="badge badge-chua-tt">🚫 Tạm ẩn</span></td>
+                            <td>
+                                <button class="btn btn-xam btn-nho" onclick="moModal('modal-sua-sp')">✏️ Sửa</button>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã ẩn sản phẩm! (Giao diện tĩnh)')">🗑️ Ẩn</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ==================== MODAL THÊM SẢN PHẨM ==================== -->
+<div id="modal-them-sp" class="modal-nen" onclick="dongModal('modal-them-sp')">
+    <div class="modal-hop" onclick="event.stopPropagation()">
+        <div class="modal-title">➕ Thêm Sản Phẩm Mới (Mockup)</div>
+        <div class="form-nhom">
+            <label class="form-nhan">Tên sản phẩm *</label>
+            <input type="text" class="form-nhap" placeholder="Ví dụ: Bạc Xỉu">
+        </div>
+        <div class="form-nhom">
+            <label class="form-nhan">Loại *</label>
+            <select class="form-chon">
+                <option value="ThucUong">🥤 Thức Uống</option>
+                <option value="DoAn">🍽️ Đồ Ăn</option>
+            </select>
+        </div>
+        <div class="form-nhom">
+            <label class="form-nhan">Giá (đồng) *</label>
+            <input type="number" class="form-nhap" placeholder="Ví dụ: 30000">
+        </div>
+        <div class="flex-hang-cuoi">
+            <button class="btn btn-xam" onclick="dongModal('modal-them-sp')">✕ Hủy</button>
+            <button class="btn btn-chinh" onclick="alert('Lưu sản phẩm thành công! (Giao diện tĩnh)'); dongModal('modal-them-sp')">💾 Lưu</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== MODAL SỬA SẢN PHẨM ==================== -->
+<div id="modal-sua-sp" class="modal-nen" onclick="dongModal('modal-sua-sp')">
+    <div class="modal-hop" onclick="event.stopPropagation()">
+        <div class="modal-title">✏️ Chỉnh Sửa Sản Phẩm (Mockup)</div>
+        <div class="form-nhom">
+            <label class="form-nhan">Tên sản phẩm</label>
+            <input type="text" class="form-nhap" value="Cà Phê Sữa Đá">
+        </div>
+        <div class="form-nhom">
+            <label class="form-nhan">Loại</label>
+            <select class="form-chon">
+                <option value="ThucUong" selected>🥤 Thức Uống</option>
+                <option value="DoAn">🍽️ Đồ Ăn</option>
+            </select>
+        </div>
+        <div class="form-nhom">
+            <label class="form-nhan">Giá (đồng)</label>
+            <input type="number" class="form-nhap" value="29000">
+        </div>
+        <div class="form-nhom">
+            <label class="form-nhan">Trạng thái</label>
+            <select class="form-chon">
+                <option value="1" selected>✅ Đang bán</option>
+                <option value="0">🚫 Tạm ẩn</option>
+            </select>
+        </div>
+        <div class="flex-hang-cuoi">
+            <button class="btn btn-xam" onclick="dongModal('modal-sua-sp')">✕ Hủy</button>
+            <button class="btn btn-chinh" onclick="alert('Cập nhật thành công! (Giao diện tĩnh)'); dongModal('modal-sua-sp')">💾 Lưu</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function moModal(id) {
+        document.getElementById(id).classList.add('hien');
+    }
+    function dongModal(id) {
+        document.getElementById(id).classList.remove('hien');
+    }
+</script>
+</body>
+</html>

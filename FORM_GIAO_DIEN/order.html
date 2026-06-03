@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Mockup Giao Diện - Gọi Món & Thanh Toán</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .nav-tab {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <img src="./images/logo.png" class="header-logo" alt="Logo">
+    <div>
+        <h1>Quán Cafe <span>Quản Lý (Mockup Giữa Kỳ)</span></h1>
+        <div class="chu-nho">Giao diện tĩnh thử nghiệm - Không kết nối CSDL</div>
+    </div>
+</header>
+
+<!-- ===== THANH ĐIỀU HƯỚNG ===== -->
+<nav class="nav-tabs">
+    <a href="./index.html" class="nav-tab">🪑 Quản Lý Bàn</a>
+    <a href="./menu.html" class="nav-tab">📋 Quản Lý Menu</a>
+    <a href="./order.html" class="nav-tab active">🛎️ Gọi Món & Thanh Toán</a>
+    <a href="./lichsu.html" class="nav-tab">📊 Lịch Sử Hóa Đơn</a>
+</nav>
+
+<!-- ===== NỘI DUNG CHÍNH ===== -->
+<main class="main-content">
+    <section class="trang">
+        <!-- Chọn bàn mockup -->
+        <div class="card">
+            <div class="card-title">🪑 Chọn Bàn (Mockup)</div>
+            <div class="form-nhom">
+                <select id="chon-ban-order-mock" class="form-chon" onchange="chonBanMock()">
+                    <option value="">-- Chọn bàn --</option>
+                    <option value="ban1">Bàn 1 (Có Khách)</option>
+                    <option value="ban2">Bàn 2 (Trống)</option>
+                    <option value="ban3">Bàn 3 (Trống)</option>
+                    <option value="ban4">Bàn 4 (Có Khách)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bàn trống mockup: nút mở bàn -->
+        <div id="khu-vuc-mo-ban-mock" class="card text-giua" style="display:none">
+            <div style="font-size:4rem;margin-bottom:15px">🪑</div>
+            <h3 id="ten-ban-mo-mock" style="color:var(--mau-cafe-sang);margin-bottom:10px"></h3>
+            <p class="chu-nho mb-15">Bàn đang trống. Nhấn nút bên dưới để mở bàn cho khách.</p>
+            <button class="btn btn-xanh" onclick="alert('Đã mở bàn thành công! (Giao diện tĩnh)')">✅ Mở Bàn & Tạo Hóa Đơn</button>
+        </div>
+
+        <!-- Bàn có khách mockup: khu vực gọi món + hóa đơn -->
+        <div id="khu-vuc-hoa-don-mock" class="khu-vuc-hoa-don" style="display:none">
+            <!-- Cột trái: gọi món mockup -->
+            <div>
+                <div class="card">
+                    <div class="card-title">🍽️ Thêm Món</div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Chọn món</label>
+                        <select id="chon-san-pham-mock" class="form-chon" onchange="kiemTraLoaiMock()">
+                            <option value="">-- Chọn món --</option>
+                            <option value="capheda" data-loai="ThucUong">🥤 Cà Phê Đá - 25.000 đ</option>
+                            <option value="caphesuada" data-loai="ThucUong">🥤 Cà Phê Sữa Đá - 29.000 đ</option>
+                            <option value="banhmipate" data-loai="DoAn">🍽️ Bánh Mì Pate - 25.000 đ</option>
+                        </select>
+                    </div>
+
+                    <!-- Tùy chọn thêm size -->
+                    <div id="khu-vuc-tuy-chon-mock" class="form-nhom" style="display:none">
+                        <label class="form-nhan">🥤 Size (chỉ áp dụng cho thức uống)</label>
+                        <select class="form-chon">
+                            <option value="">Thường (không đổi giá)</option>
+                            <option value="Size L">Size L (+5.000 đ)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Số lượng</label>
+                        <input type="number" class="form-nhap" value="1" min="1" max="99">
+                    </div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Ghi chú (không bắt buộc)</label>
+                        <input type="text" class="form-nhap" placeholder="Ví dụ: Ít đá, nhiều sữa...">
+                    </div>
+
+                    <button class="btn btn-chinh" onclick="alert('Đã thêm món vào hóa đơn! (Giao diện tĩnh không lưu)')">
+                        ➕ Thêm Vào Hóa Đơn
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cột phải: hóa đơn hiện tại mockup -->
+            <div>
+                <div class="card">
+                    <div class="card-title">
+                        🧾 Hóa Đơn - <span id="ten-ban-hoa-don-mock" class="chu-cafe"></span>
+                    </div>
+                    <div class="chu-nho mb-15">
+                        ⏰ Mở lúc: 24/05/2026 09:30:15
+                    </div>
+
+                    <div class="danh-sach-mon-goi">
+                        <div class="dong-mon">
+                            <div>
+                                <strong>Cà Phê Sữa Đá</strong>
+                                <span class="chu-nho"> • Size L</span>
+                                <div class="chu-nho">x2 × 34.000 đ</div>
+                            </div>
+                            <div class="flex-hang">
+                                <span class="gia-tien">68.000 đ</span>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã xóa món! (Giao diện tĩnh)')">✕</button>
+                            </div>
+                        </div>
+                        <div class="dong-mon">
+                            <div>
+                                <strong>Bánh Mì Pate</strong>
+                                <div class="chu-nho">x1 × 25.000 đ</div>
+                            </div>
+                            <div class="flex-hang">
+                                <span class="gia-tien">25.000 đ</span>
+                                <button class="btn btn-do btn-nho" onclick="alert('Đã xóa món! (Giao diện tĩnh)')">✕</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tong-tien-hoa-don mt-15">
+                        <div class="chu-nho mb-15">TỔNG TIỀN THANH TOÁN</div>
+                        <div class="so-tong-tien">93.000 đ</div>
+                    </div>
+
+                    <button class="btn btn-xanh" style="width:100%;margin-top:15px;justify-content:center;padding:14px"
+                            onclick="alert('Xác nhận thanh toán 93.000 đ và in hóa đơn thành công! (Giao diện tĩnh)')">
+                        💳 Thanh Toán & Xuất Hóa Đơn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    function chonBanMock() {
+        const val = document.getElementById('chon-ban-order-mock').value;
+        const khuHD = document.getElementById('khu-vuc-hoa-don-mock');
+        const khuMo = document.getElementById('khu-vuc-mo-ban-mock');
+        const tenBanMo = document.getElementById('ten-ban-mo-mock');
+        const tenBanHD = document.getElementById('ten-ban-hoa-don-mock');
+
+        if (!val) {
+            khuHD.style.display = 'none';
+            khuMo.style.display = 'none';
+        } else if (val === 'ban2' || val === 'ban3') {
+            khuHD.style.display = 'none';
+            khuMo.style.display = 'block';
+            tenBanMo.textContent = val === 'ban2' ? 'Bàn 2' : 'Bàn 3';
+        } else {
+            khuMo.style.display = 'none';
+            khuHD.style.display = 'grid';
+            tenBanHD.textContent = val === 'ban1' ? 'Bàn 1' : 'Bàn 4';
+        }
+    }
+
+    function kiemTraLoaiMock() {
+        const select = document.getElementById('chon-san-pham-mock');
+        const option = select.options[select.selectedIndex];
+        const loai = option.dataset.loai;
+        document.getElementById('khu-vuc-tuy-chon-mock').style.display = loai === 'ThucUong' ? 'block' : 'none';
+    }
+</script>
+</body>
+</html>
