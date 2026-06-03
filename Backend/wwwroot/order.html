@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Quản Lý Quán Cafe - Gọi Món & Thanh Toán</title>
+    <meta name="description" content="Phần mềm quản lý quán cafe: gọi món và thanh toán.">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <img src="/images/logo.png" class="header-logo" alt="Logo">
+    <div>
+        <h1>Quán Cafe <span>Quản Lý</span></h1>
+        <div class="chu-nho">Hệ thống quản lý bàn, menu và thanh toán</div>
+    </div>
+</header>
+
+<!-- ===== THANH ĐIỀU HƯỚNG ===== -->
+<nav class="nav-tabs">
+    <a id="tab-ban" href="/index.html" class="nav-tab">
+        🪑 Quản Lý Bàn
+    </a>
+    <a id="tab-menu" href="/menu.html" class="nav-tab">
+        📋 Quản Lý Menu
+    </a>
+    <a id="tab-order" href="/order.html" class="nav-tab active">
+        🛎️ Gọi Món & Thanh Toán
+    </a>
+    <a id="tab-lichsu" href="/lichsu.html" class="nav-tab">
+        📊 Lịch Sử Hóa Đơn
+    </a>
+</nav>
+
+<!-- ===== NỘI DUNG CHÍNH ===== -->
+<main class="main-content">
+    <!-- ==================== TRANG GỌI MÓN & THANH TOÁN ==================== -->
+    <section id="trang-order" class="trang">
+        <div id="thong-bao-order" class="thong-bao mb-15"></div>
+
+        <!-- Chọn bàn -->
+        <div class="card">
+            <div class="card-title">🪑 Chọn Bàn</div>
+            <div class="form-nhom">
+                <select id="chon-ban-order" class="form-chon" onchange="chonBanOrder()">
+                    <option value="">-- Chọn bàn --</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Bàn trống: nút mở bàn -->
+        <div id="khu-vuc-mo-ban" class="card text-giua" style="display:none">
+            <div style="font-size:4rem;margin-bottom:15px">🪑</div>
+            <h3 id="ten-ban-mo" style="color:var(--mau-cafe-sang);margin-bottom:10px"></h3>
+            <p class="chu-nho mb-15">Bàn đang trống. Nhấn nút bên dưới để mở bàn cho khách.</p>
+            <button class="btn btn-xanh" onclick="moBan()">✅ Mở Bàn & Tạo Hóa Đơn</button>
+        </div>
+
+        <!-- Bàn có khách: khu vực gọi món + hóa đơn -->
+        <div id="khu-vuc-hoa-don" class="khu-vuc-hoa-don" style="display:none">
+            <!-- Cột trái: gọi món -->
+            <div>
+                <div class="card">
+                    <div class="card-title">🍽️ Thêm Món</div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Chọn món</label>
+                        <select id="chon-san-pham" class="form-chon" onchange="kiemTraLoaiSanPham()">
+                            <option value="">-- Chọn món --</option>
+                        </select>
+                    </div>
+
+                    <!-- Tùy chọn thêm (chỉ hiện khi là Thức Uống) -->
+                    <div id="khu-vuc-tuy-chon" class="form-nhom" style="display:none">
+                        <label class="form-nhan">🥤 Size (chỉ áp dụng cho thức uống)</label>
+                        <select id="chon-size" class="form-chon">
+                            <option value="">Thường (không đổi giá)</option>
+                            <option value="Size L">Size L (+5.000 đ)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Số lượng</label>
+                        <input id="so-luong" type="number" class="form-nhap" value="1" min="1" max="99">
+                    </div>
+
+                    <div class="form-nhom">
+                        <label class="form-nhan">Ghi chú (không bắt buộc)</label>
+                        <input id="ghi-chu" type="text" class="form-nhap" 
+                               placeholder="Ví dụ: Ít đường, Nhiều đá...">
+                    </div>
+
+                    <button class="btn btn-chinh" onclick="themMonVaoHoaDon()">
+                        ➕ Thêm Vào Hóa Đơn
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cột phải: hóa đơn hiện tại -->
+            <div>
+                <div class="card">
+                    <div class="card-title">
+                        🧾 Hóa Đơn - <span id="ten-ban-hoa-don" class="chu-cafe"></span>
+                    </div>
+                    <div class="chu-nho mb-15">
+                        ⏰ Mở lúc: <span id="gio-mo-ban"></span>
+                    </div>
+
+                    <div id="danh-sach-mon-goi" class="danh-sach-mon-goi">
+                        <div class="dang-tai">Chưa có món nào.</div>
+                    </div>
+
+                    <div class="tong-tien-hoa-don mt-15">
+                        <div class="chu-nho mb-15">TỔNG TIỀN THANH TOÁN</div>
+                        <div id="so-tong-tien" class="so-tong-tien">0 đ</div>
+                    </div>
+
+                    <button class="btn btn-xanh" style="width:100%;margin-top:15px;justify-content:center;padding:14px"
+                            onclick="thanhToan()">
+                        💳 Thanh Toán & Xuất Hóa Đơn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/order.js"></script>
+</body>
+</html>
