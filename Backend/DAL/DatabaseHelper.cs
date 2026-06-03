@@ -29,6 +29,11 @@ namespace Backend.DAL
             // Tạo bảng BAN
             var taoHang = ketNoi.CreateCommand();
             taoHang.CommandText = @"
+                CREATE TABLE IF NOT EXISTS TaiKhoan (
+                    TenDangNhap TEXT PRIMARY KEY,
+                    MatKhau     TEXT NOT NULL
+                );
+
                 CREATE TABLE IF NOT EXISTS Ban (
                     Id        INTEGER PRIMARY KEY AUTOINCREMENT,
                     TenBan    TEXT NOT NULL,

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ Đăng Nhập - Quản Lý Quán Cafe</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, var(--mau-toi) 0%, #1a1512 100%);
+        }
+        .login-box {
+            background: var(--mau-nen-card);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(200,135,58,0.1);
+        }
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--mau-cafe);
+        }
+        .login-title {
+            color: var(--mau-cafe-sang);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        .login-subtitle {
+            color: var(--mau-xam);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <img src="/images/logo.png" alt="Logo" class="login-logo">
+    <h2 id="tieu-de-form" class="login-title">Đăng Nhập</h2>
+    <p id="mo-ta-form" class="login-subtitle">Hệ Thống Quản Lý Quán Cafe</p>
+
+    <!-- FORM ĐĂNG NHẬP (Hiển thị mặc định nếu đã có tài khoản) -->
+    <form id="form-login" onsubmit="event.preventDefault(); xuLyDangNhap();">
+        <div class="form-nhom" style="text-align: left;">
+            <label class="form-nhan">Tên đăng nhập</label>
+            <input id="tenDangNhap" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
+        </div>
+        <div class="form-nhom" style="text-align: left;">
+            <label class="form-nhan">Mật khẩu</label>
+            <input id="matKhau" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
+        </div>
+        
+        <div id="thong-bao-login" class="thong-bao mb-15"></div>
+
+        <button type="submit" class="btn btn-chinh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+            🔐 Đăng Nhập
+        </button>
+    </form>
+
+    <!-- FORM TẠO TÀI KHOẢN (Chỉ hiển thị khi phần mềm chưa có tài khoản nào) -->
+    <form id="form-register" style="display: none;" onsubmit="event.preventDefault(); xuLyTaoTaiKhoan();">
+        <div class="form-nhom" style="text-align: left;">
+            <label class="form-nhan">Tên tài khoản mới</label>
+            <input id="tenTaoMoi" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
+        </div>
+        <div class="form-nhom" style="text-align: left;">
+            <label class="form-nhan">Mật khẩu mới</label>
+            <input id="matKhauMoi" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
+        </div>
+        
+        <div id="thong-bao-register" class="thong-bao mb-15"></div>
+
+        <button type="submit" class="btn btn-xanh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+            ✨ Khởi Tạo & Đăng Nhập
+        </button>
+    </form>
+</div>
+
+<script src="/js/api.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

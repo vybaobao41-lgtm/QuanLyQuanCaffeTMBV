@@ -3,6 +3,19 @@
  * Tất cả hàm đều dùng async/await và trả về { ok, data, loi }
  */
 
+// KIỂM TRA ĐĂNG NHẬP TOÀN CỤC (trừ trang login)
+if (!window.location.pathname.includes('login.html')) {
+    if (localStorage.getItem('daDangNhap') !== 'true') {
+        window.location.href = '/login.html';
+    }
+}
+
+function dangXuat() {
+    localStorage.removeItem('daDangNhap');
+    localStorage.removeItem('tenDangNhap');
+    window.location.href = '/login.html';
+}
+
 const URL_GEC = 'http://localhost:5000/api';
 
 /**
