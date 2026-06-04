@@ -40,16 +40,16 @@ function chonBanDeQuanLy(banId) {
     const ban = danhSachBan.find(b => b.id === banId);
     if (!ban) return;
 
-    document.getElementById('sua-ban-id').value = ban.id;
-    document.getElementById('sua-ten-ban').value = ban.tenBan;
+    document.getElementById('txtSuaBanId').value = ban.id;
+    document.getElementById('txtSuaTenBan').value = ban.tenBan;
     document.getElementById('khu-vuc-sua-ban').style.display = 'block';
-    document.getElementById('xoa-ban-id').value = ban.id;
+    document.getElementById('txtXoaBanId').value = ban.id;
     document.getElementById('thong-bao-xoa-ban').textContent = 
         `Bàn "${ban.tenBan}" - Trạng thái: ${ban.trangThai}`;
 }
 
 async function themBanMoi() {
-    const ten = document.getElementById('ten-ban-moi').value.trim();
+    const ten = document.getElementById('txtTenBanMoi').value.trim();
     if (!ten) {
         hienThongBao('thong-bao-ban', '⚠️ Vui lòng nhập tên bàn.', false);
         return;
@@ -58,7 +58,7 @@ async function themBanMoi() {
     const kq = await ApiBan.them({ tenBan: ten });
     if (kq.ok) {
         hienThongBao('thong-bao-ban', '✅ Thêm bàn thành công!', true);
-        document.getElementById('ten-ban-moi').value = '';
+        document.getElementById('txtTenBanMoi').value = '';
         taiDanhSachBan();
     } else {
         hienThongBao('thong-bao-ban', `❌ ${kq.loi}`, false);
@@ -66,8 +66,8 @@ async function themBanMoi() {
 }
 
 async function suaBan() {
-    const id = parseInt(document.getElementById('sua-ban-id').value);
-    const ten = document.getElementById('sua-ten-ban').value.trim();
+    const id = parseInt(document.getElementById('txtSuaBanId').value);
+    const ten = document.getElementById('txtSuaTenBan').value.trim();
     if (!ten) { hienThongBao('thong-bao-ban', '⚠️ Tên bàn không được để trống.', false); return; }
 
     const kq = await ApiBan.sua(id, { tenBan: ten });
@@ -81,7 +81,7 @@ async function suaBan() {
 }
 
 async function xoaBan() {
-    const id = parseInt(document.getElementById('xoa-ban-id').value);
+    const id = parseInt(document.getElementById('txtXoaBanId').value);
     if (!id) { hienThongBao('thong-bao-ban', '⚠️ Vui lòng chọn bàn cần xóa.', false); return; }
 
     if (!confirm('Bạn có chắc muốn xóa bàn này không?')) return;

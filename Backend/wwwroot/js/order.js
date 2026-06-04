@@ -10,7 +10,7 @@ async function taiTrangOrder() {
     // Tải danh sách bàn vào combobox
     const kqBan = await ApiBan.layTatCa();
     if (kqBan.ok) {
-        const select = document.getElementById('chon-ban-order');
+        const select = document.getElementById('cboChonBanOrder');
         select.innerHTML = '<option value="">-- Chọn bàn --</option>' +
             kqBan.data.map(b => `<option value="${b.id}">${b.tenBan} (${b.trangThai})</option>`).join('');
         danhSachBan = kqBan.data;
@@ -20,7 +20,7 @@ async function taiTrangOrder() {
     const kqSP = await ApiSanPham.layDangBan();
     if (kqSP.ok) {
         danhSachSanPham = kqSP.data;
-        const select = document.getElementById('chon-san-pham');
+        const select = document.getElementById('cboChonSanPham');
         select.innerHTML = '<option value="">-- Chọn món --</option>' +
             kqSP.data.map(sp => `
                 <option value="${sp.id}" data-loai="${sp.loai}" data-gia="${sp.giaCoBan}">
@@ -31,7 +31,7 @@ async function taiTrangOrder() {
 }
 
 async function chonBanOrder() {
-    const banId = parseInt(document.getElementById('chon-ban-order').value);
+    const banId = parseInt(document.getElementById('cboChonBanOrder').value);
     if (!banId) {
         banDangChon = null;
         hoaDonHienTai = null;
@@ -64,7 +64,7 @@ async function moBan() {
         document.getElementById('khu-vuc-mo-ban').style.display = 'none';
         // Cập nhật combobox và tải hóa đơn
         await taiTrangOrder();
-        document.getElementById('chon-ban-order').value = banDangChon.id;
+        document.getElementById('cboChonBanOrder').value = banDangChon.id;
         await taiHoaDonHienTai(banDangChon.id);
     } else {
         hienThongBao('thong-bao-order', `❌ ${kq.loi}`, false);
@@ -119,7 +119,7 @@ async function taiDanhSachMonDaGoi() {
 }
 
 function kiemTraLoaiSanPham() {
-    const select = document.getElementById('chon-san-pham');
+    const select = document.getElementById('cboChonSanPham');
     const option = select.options[select.selectedIndex];
     const loai = option?.dataset?.loai || '';
     const khuVucSize = document.getElementById('khu-vuc-tuy-chon');
@@ -132,10 +132,10 @@ async function themMonVaoHoaDon() {
         return;
     }
 
-    const sanPhamId = parseInt(document.getElementById('chon-san-pham').value);
-    const soLuong = parseInt(document.getElementById('so-luong').value);
-    const size = document.getElementById('chon-size').value;
-    const ghiChu = document.getElementById('ghi-chu').value.trim();
+    const sanPhamId = parseInt(document.getElementById('cboChonSanPham').value);
+    const soLuong = parseInt(document.getElementById('txtSoLuong').value);
+    const size = document.getElementById('cboChonSize').value;
+    const ghiChu = document.getElementById('txtGhiChu').value.trim();
 
     if (!sanPhamId) { hienThongBao('thong-bao-order', '⚠️ Vui lòng chọn món.', false); return; }
     if (!soLuong || soLuong <= 0) { hienThongBao('thong-bao-order', '⚠️ Số lượng phải >= 1.', false); return; }
@@ -155,10 +155,10 @@ async function themMonVaoHoaDon() {
     if (kq.ok) {
         hienThongBao('thong-bao-order', `✅ Đã thêm món! Đơn giá: ${dinhDangTien(kq.data.donGiaBan)}`, true);
         // Reset form chọn món
-        document.getElementById('chon-san-pham').value = '';
-        document.getElementById('so-luong').value = '1';
-        document.getElementById('chon-size').value = '';
-        document.getElementById('ghi-chu').value = '';
+        document.getElementById('cboChonSanPham').value = '';
+        document.getElementById('txtSoLuong').value = '1';
+        document.getElementById('cboChonSize').value = '';
+        document.getElementById('txtGhiChu').value = '';
         document.getElementById('khu-vuc-tuy-chon').style.display = 'none';
         await taiDanhSachMonDaGoi();
     } else {
@@ -194,7 +194,7 @@ async function thanhToan() {
         banDangChon = null;
         document.getElementById('khu-vuc-hoa-don').style.display = 'none';
         await taiTrangOrder();
-        document.getElementById('chon-ban-order').value = '';
+        document.getElementById('cboChonBanOrder').value = '';
     } else {
         hienThongBao('thong-bao-order', `❌ ${kq.loi}`, false);
     }

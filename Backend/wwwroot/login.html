@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☕ Đăng Nhập - Quản Lý Quán Cafe</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logo.png" type="image/png">
     <style>
         body {
             display: flex;
@@ -54,16 +55,16 @@
     <form id="form-login" onsubmit="event.preventDefault(); xuLyDangNhap();">
         <div class="form-nhom" style="text-align: left;">
             <label class="form-nhan">Tên đăng nhập</label>
-            <input id="tenDangNhap" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
+            <input id="txtTenDangNhap" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
         </div>
         <div class="form-nhom" style="text-align: left;">
             <label class="form-nhan">Mật khẩu</label>
-            <input id="matKhau" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
+            <input id="txtMatKhau" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
         </div>
         
         <div id="thong-bao-login" class="thong-bao mb-15"></div>
 
-        <button type="submit" class="btn btn-chinh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+        <button id="btnDangNhap" type="submit" class="btn btn-chinh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
             🔐 Đăng Nhập
         </button>
     </form>
@@ -72,16 +73,16 @@
     <form id="form-register" style="display: none;" onsubmit="event.preventDefault(); xuLyTaoTaiKhoan();">
         <div class="form-nhom" style="text-align: left;">
             <label class="form-nhan">Tên tài khoản mới</label>
-            <input id="tenTaoMoi" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
+            <input id="txtTenTaoMoi" type="text" class="form-nhap" placeholder="Ví dụ: admin" required>
         </div>
         <div class="form-nhom" style="text-align: left;">
             <label class="form-nhan">Mật khẩu mới</label>
-            <input id="matKhauMoi" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
+            <input id="txtMatKhauMoi" type="password" class="form-nhap" placeholder="Nhập mật khẩu" required>
         </div>
         
         <div id="thong-bao-register" class="thong-bao mb-15"></div>
 
-        <button type="submit" class="btn btn-xanh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+        <button id="btnTaoTaiKhoan" type="submit" class="btn btn-xanh" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
             ✨ Khởi Tạo & Đăng Nhập
         </button>
     </form>

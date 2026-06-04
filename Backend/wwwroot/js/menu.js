@@ -53,9 +53,9 @@ function dongModal(modalId) {
 }
 
 async function themSanPham() {
-    const ten = document.getElementById('them-ten-sp').value.trim();
-    const gia = parseFloat(document.getElementById('them-gia-sp').value);
-    const loai = document.getElementById('them-loai-sp').value;
+    const ten = document.getElementById('txtThemTenSp').value.trim();
+    const gia = parseFloat(document.getElementById('txtThemGiaSp').value);
+    const loai = document.getElementById('cboThemLoaiSp').value;
 
     if (!ten) { hienThongBao('thong-bao-them-sp', '⚠️ Tên sản phẩm không được để trống.', false); return; }
     if (isNaN(gia) || gia < 0) { hienThongBao('thong-bao-them-sp', '⚠️ Giá phải >= 0.', false); return; }
@@ -73,21 +73,21 @@ async function moModalSua(id) {
     const sp = danhSachSanPham.find(s => s.id === id);
     if (!sp) return;
 
-    document.getElementById('sua-sp-id').value = sp.id;
-    document.getElementById('sua-ten-sp').value = sp.tenSanPham;
-    document.getElementById('sua-gia-sp').value = sp.giaCoBan;
-    document.getElementById('sua-loai-sp').value = sp.loai;
-    document.getElementById('sua-dang-ban-sp').value = sp.dangBan ? '1' : '0';
+    document.getElementById('txtSuaSpId').value = sp.id;
+    document.getElementById('txtSuaTenSp').value = sp.tenSanPham;
+    document.getElementById('txtSuaGiaSp').value = sp.giaCoBan;
+    document.getElementById('cboSuaLoaiSp').value = sp.loai;
+    document.getElementById('cboSuaDangBanSp').value = sp.dangBan ? '1' : '0';
     document.getElementById('modal-sua-sp').classList.add('hien');
     hienThongBao('thong-bao-sua-sp', '', true);
 }
 
 async function luuSuaSanPham() {
-    const id = parseInt(document.getElementById('sua-sp-id').value);
-    const ten = document.getElementById('sua-ten-sp').value.trim();
-    const gia = parseFloat(document.getElementById('sua-gia-sp').value);
-    const loai = document.getElementById('sua-loai-sp').value;
-    const dangBan = document.getElementById('sua-dang-ban-sp').value === '1';
+    const id = parseInt(document.getElementById('txtSuaSpId').value);
+    const ten = document.getElementById('txtSuaTenSp').value.trim();
+    const gia = parseFloat(document.getElementById('txtSuaGiaSp').value);
+    const loai = document.getElementById('cboSuaLoaiSp').value;
+    const dangBan = document.getElementById('cboSuaDangBanSp').value === '1';
 
     if (!ten) { hienThongBao('thong-bao-sua-sp', '⚠️ Tên không được để trống.', false); return; }
     if (isNaN(gia) || gia < 0) { hienThongBao('thong-bao-sua-sp', '⚠️ Giá phải >= 0.', false); return; }

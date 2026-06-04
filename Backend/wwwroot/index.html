@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☕ Quản Lý Quán Cafe - Quản Lý Bàn</title>
-    <meta name="description" content="Phần mềm quản lý quán cafe: quản lý bàn.">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logo.png" type="image/png">
 </head>
 <body>
 
@@ -60,29 +60,29 @@
                 <div class="card">
                     <div class="card-title">➕ Thêm Bàn Mới</div>
                     <div class="form-nhom">
-                        <label class="form-nhan" for="ten-ban-moi">Tên bàn</label>
-                        <input id="ten-ban-moi" type="text" class="form-nhap" 
+                        <label class="form-nhan" for="txtTenBanMoi">Tên bàn</label>
+                        <input id="txtTenBanMoi" type="text" class="form-nhap" 
                                placeholder="Ví dụ: Bàn 5, Bàn VIP 3">
                     </div>
-                    <button class="btn btn-chinh" onclick="themBanMoi()">➕ Thêm Bàn</button>
+                    <button id="btnThemBan" class="btn btn-chinh" onclick="themBanMoi()">➕ Thêm Bàn</button>
                     <div id="thong-bao-ban" class="thong-bao"></div>
                 </div>
 
                 <!-- Khu vực sửa/xóa bàn (hiện khi click vào bàn) -->
                 <div id="khu-vuc-sua-ban" class="card" style="display:none">
                     <div class="card-title">✏️ Chỉnh Sửa Bàn</div>
-                    <input id="sua-ban-id" type="hidden">
-                    <input id="xoa-ban-id" type="hidden">
+                    <input id="txtSuaBanId" type="hidden">
+                    <input id="txtXoaBanId" type="hidden">
 
                     <div class="form-nhom">
                         <label class="form-nhan">Tên bàn mới</label>
-                        <input id="sua-ten-ban" type="text" class="form-nhap">
+                        <input id="txtSuaTenBan" type="text" class="form-nhap">
                     </div>
                     <div id="thong-bao-xoa-ban" class="chu-nho mb-15"></div>
                     <div class="flex-hang">
-                        <button class="btn btn-chinh" onclick="suaBan()">💾 Lưu</button>
-                        <button class="btn btn-do" onclick="xoaBan()">🗑️ Xóa Bàn</button>
-                        <button class="btn btn-xam" onclick="document.getElementById('khu-vuc-sua-ban').style.display='none'">✕ Đóng</button>
+                        <button id="btnLuuBan" class="btn btn-chinh" onclick="suaBan()">💾 Lưu</button>
+                        <button id="btnXoaBan" class="btn btn-do" onclick="xoaBan()">🗑️ Xóa Bàn</button>
+                        <button id="btnDongBan" class="btn btn-xam" onclick="document.getElementById('khu-vuc-sua-ban').style.display='none'">✕ Đóng</button>
                     </div>
                 </div>
             </div>

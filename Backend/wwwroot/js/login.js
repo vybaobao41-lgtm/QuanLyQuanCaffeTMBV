@@ -35,8 +35,8 @@ async function kiemTraKhoiTao() {
 }
 
 async function xuLyDangNhap() {
-    const tenDangNhap = document.getElementById('tenDangNhap').value.trim();
-    const matKhau = document.getElementById('matKhau').value;
+    const tenDangNhap = document.getElementById('txtTenDangNhap').value.trim();
+    const matKhau = document.getElementById('txtMatKhau').value;
     
     if (!tenDangNhap || !matKhau) {
         hienThongBao('thong-bao-login', '⚠️ Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.', false);
@@ -68,8 +68,8 @@ async function xuLyDangNhap() {
 }
 
 async function xuLyTaoTaiKhoan() {
-    const tenDangNhap = document.getElementById('tenTaoMoi').value.trim();
-    const matKhau = document.getElementById('matKhauMoi').value;
+    const tenDangNhap = document.getElementById('txtTenTaoMoi').value.trim();
+    const matKhau = document.getElementById('txtMatKhauMoi').value;
     
     if (!tenDangNhap || !matKhau) {
         hienThongBao('thong-bao-register', '⚠️ Vui lòng nhập đầy đủ tên và mật khẩu.', false);

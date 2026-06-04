@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>☕ Quản Lý Quán Cafe - Gọi Món & Thanh Toán</title>
-    <meta name="description" content="Phần mềm quản lý quán cafe: gọi món và thanh toán.">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/logo.png" type="image/png">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
         <div class="card">
             <div class="card-title">🪑 Chọn Bàn</div>
             <div class="form-nhom">
-                <select id="chon-ban-order" class="form-chon" onchange="chonBanOrder()">
+                <select id="cboChonBanOrder" class="form-chon" onchange="chonBanOrder()">
                     <option value="">-- Chọn bàn --</option>
                 </select>
             </div>
@@ -58,7 +58,7 @@
             <div style="font-size:4rem;margin-bottom:15px">🪑</div>
             <h3 id="ten-ban-mo" style="color:var(--mau-cafe-sang);margin-bottom:10px"></h3>
             <p class="chu-nho mb-15">Bàn đang trống. Nhấn nút bên dưới để mở bàn cho khách.</p>
-            <button class="btn btn-xanh" onclick="moBan()">✅ Mở Bàn & Tạo Hóa Đơn</button>
+            <button id="btnMoBan" class="btn btn-xanh" onclick="moBan()">✅ Mở Bàn & Tạo Hóa Đơn</button>
         </div>
 
         <!-- Bàn có khách: khu vực gọi món + hóa đơn -->
@@ -70,7 +70,7 @@
 
                     <div class="form-nhom">
                         <label class="form-nhan">Chọn món</label>
-                        <select id="chon-san-pham" class="form-chon" onchange="kiemTraLoaiSanPham()">
+                        <select id="cboChonSanPham" class="form-chon" onchange="kiemTraLoaiSanPham()">
                             <option value="">-- Chọn món --</option>
                         </select>
                     </div>
@@ -78,7 +78,7 @@
                     <!-- Tùy chọn thêm (chỉ hiện khi là Thức Uống) -->
                     <div id="khu-vuc-tuy-chon" class="form-nhom" style="display:none">
                         <label class="form-nhan">🥤 Size (chỉ áp dụng cho thức uống)</label>
-                        <select id="chon-size" class="form-chon">
+                        <select id="cboChonSize" class="form-chon">
                             <option value="">Thường (không đổi giá)</option>
                             <option value="Size L">Size L (+5.000 đ)</option>
                         </select>
@@ -86,16 +86,16 @@
 
                     <div class="form-nhom">
                         <label class="form-nhan">Số lượng</label>
-                        <input id="so-luong" type="number" class="form-nhap" value="1" min="1" max="99">
+                        <input id="txtSoLuong" type="number" class="form-nhap" value="1" min="1" max="99">
                     </div>
 
                     <div class="form-nhom">
                         <label class="form-nhan">Ghi chú (không bắt buộc)</label>
-                        <input id="ghi-chu" type="text" class="form-nhap" 
+                        <input id="txtGhiChu" type="text" class="form-nhap" 
                                placeholder="Ví dụ: Ít đường, Nhiều đá...">
                     </div>
 
-                    <button class="btn btn-chinh" onclick="themMonVaoHoaDon()">
+                    <button id="btnThemVaoHoaDon" class="btn btn-chinh" onclick="themMonVaoHoaDon()">
                         ➕ Thêm Vào Hóa Đơn
                     </button>
                 </div>
@@ -120,7 +120,7 @@
                         <div id="so-tong-tien" class="so-tong-tien">0 đ</div>
                     </div>
 
-                    <button class="btn btn-xanh" style="width:100%;margin-top:15px;justify-content:center;padding:14px"
+                    <button id="btnThanhToan" class="btn btn-xanh" style="width:100%;margin-top:15px;justify-content:center;padding:14px"
                             onclick="thanhToan()">
                         💳 Thanh Toán & Xuất Hóa Đơn
                     </button>
