@@ -19,76 +19,148 @@ namespace Backend.DAL
         public List<Ban> LayTatCa()
         {
             var danhSach = new List<Ban>();
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "SELECT * FROM Ban ORDER BY Id;";
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "SELECT * FROM Ban ORDER BY Id;";
 
-            using var reader = lenh.ExecuteReader();
-            while (reader.Read())
-                danhSach.Add(DocBan(reader));
+                using var reader = lenh.ExecuteReader();
+                while (reader.Read())
+                    danhSach.Add(DocBan(reader));
 
-            return danhSach;
+                return danhSach;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
 
         public Ban? LayTheoId(int id)
         {
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "SELECT * FROM Ban WHERE Id = $id;";
-            lenh.Parameters.AddWithValue("$id", id);
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "SELECT * FROM Ban WHERE Id = $id;";
+                lenh.Parameters.AddWithValue("$id", id);
 
-            using var reader = lenh.ExecuteReader();
-            return reader.Read() ? DocBan(reader) : null;
+                using var reader = lenh.ExecuteReader();
+                return reader.Read() ? DocBan(reader) : null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
 
         public void Them(Ban ban)
         {
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "INSERT INTO Ban (TenBan, TrangThai) VALUES ($ten, 'Trống');";
-            lenh.Parameters.AddWithValue("$ten", ban.TenBan);
-            lenh.ExecuteNonQuery();
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "INSERT INTO Ban (TenBan, TrangThai) VALUES ($ten, 'Trống');";
+                lenh.Parameters.AddWithValue("$ten", ban.TenBan);
+                lenh.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
 
         public void Sua(Ban ban)
         {
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "UPDATE Ban SET TenBan = $ten WHERE Id = $id;";
-            lenh.Parameters.AddWithValue("$ten", ban.TenBan);
-            lenh.Parameters.AddWithValue("$id", ban.Id);
-            lenh.ExecuteNonQuery();
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "UPDATE Ban SET TenBan = $ten WHERE Id = $id;";
+                lenh.Parameters.AddWithValue("$ten", ban.TenBan);
+                lenh.Parameters.AddWithValue("$id", ban.Id);
+                lenh.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
 
         public void Xoa(int id)
         {
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "DELETE FROM Ban WHERE Id = $id;";
-            lenh.Parameters.AddWithValue("$id", id);
-            lenh.ExecuteNonQuery();
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "DELETE FROM Ban WHERE Id = $id;";
+                lenh.Parameters.AddWithValue("$id", id);
+                lenh.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
 
         public void CapNhatTrangThai(int id, string trangThai)
         {
-            using var ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
-            ketNoi.Open();
+            SqliteConnection ketNoi = null;
+            try
+            {
+                ketNoi = new SqliteConnection(DatabaseHelper.ChuoiKetNoi);
+                ketNoi.Open();
 
-            var lenh = ketNoi.CreateCommand();
-            lenh.CommandText = "UPDATE Ban SET TrangThai = $tt WHERE Id = $id;";
-            lenh.Parameters.AddWithValue("$tt", trangThai);
-            lenh.Parameters.AddWithValue("$id", id);
-            lenh.ExecuteNonQuery();
+                var lenh = ketNoi.CreateCommand();
+                lenh.CommandText = "UPDATE Ban SET TrangThai = $tt WHERE Id = $id;";
+                lenh.Parameters.AddWithValue("$tt", trangThai);
+                lenh.Parameters.AddWithValue("$id", id);
+                lenh.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi CSDL: " + ex.Message);
+            }
+            finally
+            {
+                if (ketNoi != null) ketNoi.Close();
+            }
         }
     }
 }
